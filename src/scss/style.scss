@@ -1,0 +1,431 @@
+body {
+    font-family: YakuHanJP, 'Noto Sans Japanese', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+}
+
+/*--------------------------------------------
+ Common Style
+ --------------------------------------------*/
+
+html {
+    font-size: 16px;
+}
+
+body {
+    line-height: 1.5rem;
+}
+
+/*--------------------------------------------
+ top style
+ --------------------------------------------*/
+
+/*--------------------------------------------
+ Welcome
+ --------------------------------------------*/
+#welcome {
+    display: block;
+    position: relative;
+
+    height: 15vh;
+    width: 80%;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    max-height: 113px;
+    max-width: 593px;
+    background-image: url("../img/portfolio.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    z-index: -80px;
+}
+
+/*--------------------------------------------
+ snow up
+ --------------------------------------------*/
+#background {
+    position: fixed;
+
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    width: 100%;
+    height: 100%;
+
+    //background: linear-gradient(to right, #4e54c8, #8f94fb);
+
+    background: radial-gradient(ellipse at bottom right, #00ABEB, #6633CC);
+    //background: radial-gradient(eclipse at top left, red 50px, yellow 70px, skyblue 100px);
+
+
+    z-index: -100;
+}
+
+.snow {
+    display: block;
+    position: fixed;
+
+    top: 100vh;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    filter: blur(4px);
+
+    height: 20px;
+    width: 20px;
+    max-height: 40px;
+    max-width: 40px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    //background-color: red;
+
+    z-index: -90;
+}
+
+/*--------------------------------------------
+ Section
+ --------------------------------------------*/
+
+.item {
+    display: block;
+    position: relative;
+
+    margin-top: 90px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &:first-of-type {
+        margin-top: 80px;
+    }
+
+    &:last-of-type {
+        margin-bottom: 20vh
+    }
+
+    @keyframes F_ITEM_LINE{
+        from {
+            width: 0%;
+        }
+    
+        to {
+            width: 85%;
+        }
+    }
+
+    .item__line {
+        display: block;
+        position: relative;
+    
+        width: 0%;
+        max-width: 1000px;
+        height: 1px;
+    
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    
+        margin-left: auto;
+        margin-right: auto;
+    
+        border-top: solid 3px whitesmoke;
+        //box-shadow: 0px 0px 1px;
+    
+        animation: F_ITEM_LINE 1s linear 0s 1 normal forwards;
+        animation-play-state: paused;
+    }
+
+    @keyframes F_ITEM_SUBTITLE{
+        from {
+            // IE11, Edge対策。
+            // Edgeだと、calc(%-px)が効かない。酷い。
+            top: 50%;
+            transform: translateY(-24px);
+        }
+    
+        to {
+            top: 0%;
+            transform: translateY(-53px);
+        }
+    }
+    
+    .item__subtitle {
+        display: block;
+        position: absolute;
+    
+        //top: calc(50% - 24px);
+        top: 50%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    
+        transform: translateY(-24px);
+    
+        font-size: 36px;    // media queryで大きさ調整する必要があるかも？
+        text-align: center;
+        height: 48px;
+        line-height: 48px;
+    
+        // margin-top: 50%;
+        // margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+    
+        color: white;
+        text-shadow: 2px 2px gray;
+    
+        animation: F_ITEM_SUBTITLE 1s linear 0s 1 normal forwards;
+        //animation: F_ITEM_SUBTITLE 1s linear 0s 1;
+        animation-play-state: paused;
+    }
+    
+    @keyframes F_ITEM_CONTENTS{
+        from {
+            opacity: 0;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .item__contents {
+        display: block;
+    
+        width: 80%;
+        max-width: 941px;
+    
+        padding-top: 20px;
+        padding-bottom: 20px;
+    
+        margin-left: auto;
+        margin-right: auto;
+    
+        opacity: 0;
+    
+        animation: F_ITEM_CONTENTS 1s ease-in 0s 1 normal forwards;
+        animation-play-state: paused;
+    
+        color: whitesmoke;
+        text-shadow: 2px 2px gray;
+    
+        p {
+            margin-top: 5px;
+    
+            &:first-of-type {
+                margin-top: 20px;
+            }
+    
+            &:last-of-type {
+                margin-bottom: 20px;
+            }
+        }
+    }    
+}
+
+
+.item__play {
+    .item__line,.item__subtitle,.item__contents {
+        animation-play-state: running;
+    }
+}
+
+/*--------------------------------------------
+ profile
+ --------------------------------------------*/
+dl.item__profile {
+    dt {
+        font-size: 1.2rem;
+        text-decoration: underline;
+
+        &:nth-of-type(odd) {
+            text-align: left;
+        }
+
+        &:nth-of-type(even) {
+            text-align: right;
+        }
+    }
+
+    dd {
+        font-size: 0.8rem;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+
+        &:not(:last-of-type) {
+            margin-bottom: 20px;
+        }
+
+        border-bottom: dashed 1px whitesmoke;
+
+        &:nth-of-type(odd) {
+            text-align: left;
+        }
+
+        &:nth-of-type(even) {
+            text-align: right;
+        }
+    }
+}
+
+/*--------------------------------------------
+ history
+ --------------------------------------------*/
+dl.item__history {
+    position: relative;
+
+    font-size: 0.8rem;
+
+    dd {
+        &:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+
+        border-bottom: dashed 1px whitesmoke;
+    }
+
+    @media screen and (min-width:800px) {
+        dt {
+            position:  relative;
+            width: 25%;
+    
+            float: left;
+    
+            &::after {
+                content: " ";
+                display: block;
+                clear: both;
+            }
+
+            // dtは float:left で浮かせているから、marginは意味なし。
+            // &:not(:last-of-type) {
+            //     margin-bottom: 10px;
+            // }    
+        }
+    
+        dd {
+            position: relative;
+    
+            padding-left: 25%;
+            width: 75%;
+        }           
+    }
+
+}
+
+/*--------------------------------------------
+ els
+ --------------------------------------------*/
+.els {
+    position: relative;
+    width: 100%;
+
+    .els__viewcheck {
+        display: none;
+    }
+
+    .els__item {
+        position: relative;
+        display: block;
+
+        max-height: 25px;
+        width: calc(100%-2px-1rem);
+
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px gray;
+        border: solid 1px;
+
+        &:not(:first-of-type) {
+            margin-top: 20px;
+        }
+
+        transition: all 1s;
+
+        .els__line  {
+            height: 0;
+            width: 0;
+            margin: auto;
+            border-bottom: dashed 0 whitesmoke;
+
+            transition: all 1s;
+        }
+
+        .els__wrapper--title {
+            display: table;
+            height: 100%;
+            width: 100%;
+
+            transition: all 1s;
+
+            .els__title {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+
+        .els__wrapper--info {
+            display: table;
+            height: 0;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 1s;
+
+            .els__info {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .els__viewcheck:checked+label.els__item {
+        //height: 220px;
+        max-height: 220px;
+        .els__wrapper--title {
+            height: 20%;
+            //border-bottom: dashed 1px whitesmoke;
+        }
+
+        .els__line  {
+            height: 0;
+            width: 100%;
+            border-bottom: dashed 1px whitesmoke;
+        }
+
+        .els__wrapper--info {
+            display: table;
+            height: 80%;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+/*--------------------------------------------
+ works
+ --------------------------------------------*/
+
+/*--------------------------------------------
+ Debug
+ --------------------------------------------*/
