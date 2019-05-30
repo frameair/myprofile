@@ -13,7 +13,7 @@ const typescript = require('gulp-typescript');
 const scss = (done) => {
     gulp.src('./src/scss/**/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('./public/css/'));
+        .pipe(gulp.dest('./docs/css/'));
 
     done();   // 作業終了を意味する。
 };
@@ -23,7 +23,7 @@ const sync = (done) => {
     browser({
         port: 8081,
         server: {
-            baseDir: './public/',
+            baseDir: './docs/',
             index: 'index.html'
         },
         reloadOnRestart: true
@@ -41,7 +41,7 @@ const tscript = (done) => {
         './src/ts/**/*.ts'
     ])
         .pipe(typescript(options))
-        .pipe(gulp.dest('./public/js'));
+        .pipe(gulp.dest('./docs/js'));
     
     done();
 };
@@ -54,7 +54,7 @@ const watchFiles = (done) => {
     };
 
     gulp.watch('./src/scss/**/*.scss').on('change', gulp.series(scss, reload))
-    gulp.watch('./public/**').on('change', gulp.series(reload));
+    gulp.watch('./docs/**').on('change', gulp.series(reload));
     gulp.watch('./src/ts/**/*.ts').on('change', gulp.series(tscript));
 
     done();
