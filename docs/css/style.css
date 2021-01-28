@@ -236,13 +236,41 @@ dl.item__history {
       border-bottom: dashed 0 whitesmoke;
       transition: all 1s; }
     .els .els__item .els__wrapper--title {
-      display: table;
+      display: flex;
+      justify-content: space-between;
       height: 100%;
       width: 100%;
-      transition: all 1s; }
+      transition: all 1s;
+      margin-bottom: 10px; }
       .els .els__item .els__wrapper--title .els__title {
-        display: table-cell;
-        vertical-align: middle; }
+        display: inline-block; }
+      .els .els__item .els__wrapper--title .els__button {
+        display: inline-block;
+        position: relative;
+        width: 24px;
+        height: 24px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 2px 2px 2px gray; }
+        .els .els__item .els__wrapper--title .els__button::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 25%;
+          transform: translateY(-1px);
+          height: 2px;
+          width: 50%;
+          background-color: black; }
+        .els .els__item .els__wrapper--title .els__button::before {
+          content: '';
+          position: absolute;
+          top: 25%;
+          left: 50%;
+          transform: translateX(-1px);
+          width: 2px;
+          height: 50%;
+          background-color: black;
+          transition: background-color 1s; }
     .els .els__item .els__wrapper--info {
       display: table;
       height: 0;
@@ -256,6 +284,16 @@ dl.item__history {
     max-height: 220px; }
     .els .els__viewcheck:checked + label.els__item .els__wrapper--title {
       height: 20%; }
+      .els .els__viewcheck:checked + label.els__item .els__wrapper--title .els__button::before {
+        content: '';
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translateX(-1px);
+        width: 2px;
+        height: 50%;
+        background-color: white;
+        transition: background-color 1s; }
     .els .els__viewcheck:checked + label.els__item .els__line {
       height: 0;
       width: 100%;
