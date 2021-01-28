@@ -71,7 +71,7 @@
 
 {
     // item classを全セレクト
-    const items = document.querySelectorAll('.item');
+    const items : NodeListOf<HTMLDivElement> = document.querySelectorAll('.item');
 
     // animationのスタート関数。
     // view point height * viewPointRateの位置に、Subtitleが来た時点で、.item element
